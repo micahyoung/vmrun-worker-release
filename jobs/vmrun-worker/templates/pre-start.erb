@@ -1,0 +1,7 @@
+#!/bin/bash
+set -o errexit
+set -o pipefail
+
+export LD_LIBRARY_PATH=$(find /usr/lib/vmware/lib/* -type d | paste -sd:)
+/usr/lib/vmware/bin/vmware-vmx-debug --new-sn <%= p('vmware.serial_number') %>
+

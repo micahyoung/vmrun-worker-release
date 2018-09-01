@@ -1,0 +1,13 @@
+---
+name: vmrun-worker
+
+templates:
+  pre-start.erb: bin/pre-start
+
+packages:
+- workstation
+
+properties:
+  vmware.serial_number:
+    description: "VMWare Serial Number (required)"
+

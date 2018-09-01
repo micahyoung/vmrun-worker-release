@@ -1,0 +1,7 @@
+---
+name: workstation
+
+dependencies: []
+
+files:
+- VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle
