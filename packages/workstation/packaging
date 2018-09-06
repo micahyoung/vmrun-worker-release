@@ -6,11 +6,6 @@ set -o pipefail
 # WORKAROUND can't do apt update
 chmod 1777 /tmp #
 
-# install vnc4server to provide X11 libs
-# and vnc option for workstation
-apt update
-apt install -y vnc4server ruby build-essential
-
 # WORKAROUND for noexec'd /tmp
 # overwrite mktemp to return exec-able directory
 mkdir ${BOSH_INSTALL_TARGET}/tmp
@@ -27,3 +22,8 @@ bash VMware-Workstation-Full-14.1.3-9474260.x86_64.bundle \
   --required \
   --eulas-agreed \
   ;
+
+# link in required libraries missing from most stemcells
+# TODO: find proper installer argument to do this
+find /var/vcap/packages/workstation/vmware/ -name 'lib*.so*' -type f -print0 | xargs -0 -n1 -I{} ln -s {} /usr/lib/
+
