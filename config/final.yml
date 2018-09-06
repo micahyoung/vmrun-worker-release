@@ -1,1 +1,5 @@
 name: vmrun-worker
+blobstore:
+  provider: s3
+  options:
+    bucket_name: vmrun-worker-blobs
